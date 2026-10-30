@@ -1,0 +1,16 @@
+.project-dialog { position: fixed; inset: 0; margin: auto; width: min(920px, calc(100vw - 32px)); max-height: min(94vh, 920px); padding: 0; border: 0; background: var(--bg); color: var(--ink); border-radius: 6px; box-shadow: 0 20px 80px rgba(0,0,0,.19); }
+.project-dialog::backdrop { background: rgba(28,30,27,.62); }
+.dialog-inner { padding: clamp(18px, 3vw, 34px); }
+.dialog-top { margin-bottom: 16px; }
+.dialog-close { border: 0; background: transparent; padding: 9px; font-size: 14px; }
+.dialog-art { height: clamp(220px, 41vh, 395px); overflow: hidden; }
+.dialog-art .art { height: 100%; }
+.dialog-art .project-cover-image { width: 100%; height: 100%; object-fit: cover; }
+.dialog-copy { margin-top: 31px; }
+.dialog-copy .eyebrow { color: #858b82; }
+.dialog-copy h2 { margin: 12px 0 13px; font-size: clamp(32px, 4.4vw, 58px); letter-spacing: -.058em; line-height: 1.04; font-weight: 500; }
+.dialog-summary { font-size: 16px; line-height: 1.58; max-width: 680px; color: #555b54; }
+.dialog-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 23px; }
+.dialog-details p { margin: 5px 0 0; line-height: 1.5; }
+.dialog-links { display: flex; gap: 24px; padding-top: 16px; font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 580px) { .dialog-art { height: 250px; } .dialog-details { grid-template-columns: 1fr; } }

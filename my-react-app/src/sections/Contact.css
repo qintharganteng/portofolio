@@ -1,0 +1,12 @@
+.contact-section { background: #262c28; color: #f3f3e9; padding-top: clamp(75px, 10vw, 135px); padding-bottom: clamp(57px, 8vw, 100px); }
+.contact-eyebrow { color: #b1b9af; }
+.contact-section h2 { margin: clamp(50px, 7vw, 100px) 0 20px; font-size: clamp(68px, 10.5vw, 163px); font-weight: 450; letter-spacing: -.079em; line-height: .95; }
+.contact-section h2 em { color: #a3b39b; font-style: normal; }
+.contact-mail { display: inline-flex; align-items: center; gap: 26px; font-size: clamp(19px, 2.15vw, 32px); border-bottom: 1px solid #879087; padding-bottom: 13px; letter-spacing: -.04em; }
+.contact-mail span { transition: transform .2s ease; }
+.contact-mail:hover span { transform: translate(3px,-3px); }
+.contact-bottom { border-top: 1px solid #586159; margin-top: clamp(100px, 13vw, 185px); padding-top: 22px; }
+.contact-bottom p { margin: 0; color: #b6bcb2; font-size: 13px; line-height: 1.7; }
+.contact-socials { display: flex; gap: 26px; font-size: 13px; }
+.contact-socials a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 650px) { .contact-section h2 { font-size: clamp(65px, 13vw, 96px); margin-top: 60px; } .contact-eyebrow span:last-child { display:none; } .contact-mail { font-size: 19px; } .contact-bottom { margin-top: 95px; } }

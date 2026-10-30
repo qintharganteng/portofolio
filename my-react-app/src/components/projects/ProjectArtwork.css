@@ -1,0 +1,87 @@
+.art { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: var(--font); }
+.art-brandline, .prediction-head, .kaloriku-head, .optimization-meta, .review-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: clamp(8px, .7vw, 11px); letter-spacing: .035em; font-weight: 600; }
+/* 01 Courier */
+.art-courier { color: #ebf1df; background: #254638; padding: 5.2%; }
+.art-brandline > span:first-child { font-size: clamp(18px, 2.5vw, 33px); font-weight: 650; letter-spacing: -.08em; }
+.art-brand-dot { color: #d5dfaa; }
+.courier-bigtype { position: absolute; top: 22%; left: 6%; font-size: clamp(48px, 6vw, 91px); font-weight: 650; line-height: .87; letter-spacing: -.083em; }
+.courier-bigtype em { color: #c8dbad; font-style: normal; font-weight: 450; }
+.courier-phone { position: absolute; top: 19%; right: 8%; width: 37%; height: 86%; min-width: 128px; transform: rotate(-8deg); background: #f8f9f3; border: 6px solid #151f1a; border-radius: 24px 24px 0 0; box-shadow: -12px 14px 24px rgba(0,0,0,.16); overflow: hidden; color: #202c26; }
+.phone-top { display: flex; justify-content: space-between; padding: 9px 11px; font-size: 9px; font-weight: 700; }
+.phone-greeting { font-size: clamp(12px, 1.4vw, 18px); line-height: 1.15; padding: 18px 10px 10px; }
+.phone-greeting strong { font-weight: 650; }
+.phone-map { height: 32%; margin: 10px 8px; position: relative; background: #e0e9df; overflow: hidden; border-radius: 5px; }
+.map-road { position: absolute; height: 12px; width: 135%; background: #fafbf4; transform: rotate(-27deg); left: -20%; }
+.map-road.one { top: 19%; } .map-road.two { top: 58%; transform: rotate(36deg); } .map-road.three { top: 79%; transform: rotate(-20deg); }
+.map-point { position: absolute; z-index: 2; display: block; height: 11px; width: 11px; background: #2d7056; border: 3px solid #f4f4e9; border-radius: 50%; }
+.map-point.first { left: 33%; top: 34%; } .map-point.second { left: 73%; top: 65%; background: #d8aa66; }
+.phone-stat { display: flex; flex-direction: column; padding: 6px 9px; gap: 6px; }
+.phone-stat small { font-size: 7px; color: #718077; font-weight: 650; }
+.phone-stat strong { font-size: 10px; line-height: 1.2; }
+.phone-stat span { font-size: 8px; }
+.courier-footer { position: absolute; bottom: 5%; left: 5.2%; right: 5.2%; font-size: 9px; letter-spacing: .08em; display: flex; justify-content: space-between; }
+/* 02 Canteen */
+.art-canteen { background: #f1eddf; color: #363e30; padding: 5%; }
+.canteen-nav { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 600; }
+.canteen-nav > span:first-child { font-weight: 650; font-size: clamp(20px, 2.8vw, 35px); letter-spacing: -.085em; }
+.canteen-content { position: relative; display: flex; flex-direction: column; z-index: 2; align-items: flex-start; padding-top: 16%; }
+.canteen-content > span:first-child { font-size: 9px; letter-spacing: .08em; font-weight: 600; margin-bottom: 15px; }
+.canteen-content strong { font-size: clamp(39px, 5vw, 76px); letter-spacing: -.078em; font-weight: 550; line-height: .95; }
+.canteen-content i { font-style: normal; color: #b0714c; }
+.canteen-content > span:last-child { font-size: 11px; border-bottom: 1px solid #434a3b; padding-bottom: 6px; margin-top: 23px; }
+.canteen-plates { position: absolute; right: -10%; bottom: -15%; height: 71%; width: 66%; transform: rotate(-20deg); }
+.plate { position: absolute; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; box-shadow: 7px 14px 25px rgba(59,67,44,.14); }
+.plate-one { width: 83%; right: 2%; top: 2%; background: #fefdf3; border: 18px solid #ece6cb; }
+.plate-two { width: 43%; bottom: 0; left: 0; background: #f7f0db; border: 12px solid #d7d6ad; }
+.plate-inner { width: 70%; height: 70%; border-radius: 43% 58% 56% 42%; background: #63805b; box-shadow: inset 10px -14px 0 #89a47a, 13px 12px 0 -3px #d8a15e, -11px -12px 0 -4px #ba7054; transform: rotate(18deg); }
+.plate-two .plate-inner { background: #d19c5b; box-shadow: inset 4px -5px 0 #c27648; }
+.canteen-credit { position: absolute; left: 5%; bottom: 5%; font-size: 9px; letter-spacing: .08em; z-index: 2; }
+/* 03 Predictive analytics */
+.art-prediction { padding: 5%; background: #e2e9e1; color: #334a38; }
+.prediction-main { position: absolute; top: 17%; left: 5%; }
+.prediction-kicker { display: block; margin-bottom: 18px; font-size: 10px; letter-spacing: .08em; }
+.prediction-main strong { font-size: clamp(49px, 6.2vw, 96px); font-weight: 550; line-height: .91; letter-spacing: -.08em; }
+.prediction-main i { font-style: normal; color: #849a7e; }
+.prediction-chart { position: absolute; bottom: 9%; left: 5%; right: 5%; height: 28%; }
+.chart-caption { font-size: 9px; font-weight: 600; letter-spacing: .07em; }
+.prediction-chart svg { display: block; width: 100%; height: 82%; margin-top: 5px; }
+.chart-axis { display: flex; justify-content: space-between; font-size: 8px; letter-spacing: .07em; }
+/* 04 QA */
+.art-kaloriku { padding: 5%; background: #eaddd3; color: #4a3a31; }
+.kaloriku-head > span:first-child { font-size: clamp(21px, 2.4vw, 31px); letter-spacing: -.08em; font-weight: 650; }
+.kaloriku-title { position: absolute; top: 19%; left: 5%; font-size: clamp(43px, 5.2vw, 75px); line-height: .96; letter-spacing: -.078em; font-weight: 550; z-index: 2; }
+.kaloriku-title em { font-style: normal; color: #986a56; font-weight: 450; }
+.kaloriku-browser { position: absolute; bottom: -8%; right: -3%; width: 80%; height: 49%; background: #fcf9f5; border: 1px solid #d2c3b9; border-radius: 8px 8px 0 0; box-shadow: -12px 12px 25px rgba(69,51,42,.1); overflow: hidden; }
+.browser-toolbar { display: flex; justify-content: space-between; align-items: center; height: 28px; padding: 0 16px; border-bottom: 1px solid #ede6e0; color: #a3a19a; font-size: 9px; }
+.browser-body { display: flex; height: calc(100% - 28px); }
+.browser-sidebar { background: #f2e9e4; width: 29%; padding: 19px 7px; display: flex; flex-direction: column; gap: 17px; color: #7b706b; font-size: 9px; }
+.browser-metrics { padding: 17px; flex: 1; }
+.browser-metrics small { color: #81736e; font-size: 9px; letter-spacing: .05em; }
+.metric-row { display: flex; justify-content: space-between; align-items: end; }
+.metric-row strong { font-size: clamp(28px, 3.8vw, 50px); letter-spacing: -.07em; }
+.metric-bars { display: flex; align-items: end; gap: 4px; height: 50px; }
+.metric-bars span { width: 8px; background: #ae846c; border-radius: 2px 2px 0 0; }
+.metric-bars span:nth-child(1){height:35%}.metric-bars span:nth-child(2){height:55%}.metric-bars span:nth-child(3){height:75%}.metric-bars span:nth-child(4){height:48%}.metric-bars span:nth-child(5){height:80%}.metric-bars span:nth-child(6){height:67%}.metric-bars span:nth-child(7){height:95%}
+.browser-metrics p { color: #9a8d86; font-size: 10px; }
+/* 05 Optimization */
+.art-optimization { padding: 5%; background: #252c27; color: #f0f3e5; }
+.optimization-title { position: absolute; top: 19%; left: 5%; font-size: clamp(52px, 6.6vw, 99px); font-weight: 500; line-height: .93; letter-spacing: -.08em; }
+.optimization-title i { font-style: normal; color: #bfd2ab; }
+.optimization-plot { position: absolute; left: 5%; right: 5%; bottom: 7%; height: 37%; }
+.optimization-plot svg { display: block; width: 100%; height: 100%; }
+.optimization-plot > span { font-size: 9px; letter-spacing: .08em; }
+/* 06 Literature review */
+.art-review { padding: 5%; background: #e6e4d9; color: #272a26; }
+.review-title { position: absolute; top: 18%; left: 5%; font-size: clamp(62px, 7.4vw, 114px); font-weight: 650; line-height: .86; letter-spacing: -.095em; z-index: 2; }
+.review-title em { font-weight: 450; font-style: normal; color: #868d78; }
+.review-rule { position: absolute; left: 5%; right: 5%; bottom: 20%; height: 2px; background: #777e72; }
+.review-bottom { position: absolute; bottom: 7%; left: 5%; right: 5%; font-size: clamp(9px, 1vw, 12px); line-height: 1.25; letter-spacing: .045em; display: flex; justify-content: space-between; align-items: end; }
+.review-index { position: absolute; right: 3%; bottom: 22%; font-size: clamp(90px, 13vw, 188px); font-weight: 650; letter-spacing: -.11em; color: #d1d1c3; line-height: 1; }
+@media (max-width: 670px) {
+ .courier-bigtype { font-size: clamp(53px, 11vw, 79px); }
+ .canteen-content strong { font-size: clamp(47px, 10vw, 75px); }
+ .prediction-main strong { font-size: clamp(57px, 12vw, 87px); }
+ .kaloriku-title { font-size: clamp(48px, 10vw, 75px); }
+ .optimization-title { font-size: clamp(60px, 12vw, 90px); }
+ .review-title { font-size: clamp(70px, 15vw, 108px); }
+}

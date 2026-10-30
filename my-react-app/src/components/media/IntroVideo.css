@@ -1,0 +1,15 @@
+.intro-media { width: 100%; }
+.video-frame { width: 100%; aspect-ratio: 9 / 16; position: relative; overflow: hidden; background: #a9b1a4; border-radius: 3px; }
+.video-frame.has-video { background: #212521; }
+.intro-video { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; }
+.video-poster { position: absolute; inset: 0; background: #b8c0b1; color: #28322b; padding: 19px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+.poster-top, .poster-bottom { display: flex; justify-content: space-between; font-size: 9px; font-weight: 600; letter-spacing: .075em; z-index: 1; }
+.poster-center { position: absolute; z-index: 3; top: 48%; left: 8%; transform: translateY(-50%); }
+.poster-small { display: block; font-size: 10px; letter-spacing: .08em; margin-bottom: 21px; }
+.poster-center strong { display: block; font-size: clamp(36px, 4.4vw, 59px); font-weight: 450; letter-spacing: -.068em; line-height: .99; }
+.poster-orbit { position: absolute; width: 120%; aspect-ratio: 1; border: 1px solid rgba(35,48,37,.25); border-radius: 50%; right: -40%; top: 20%; }
+.orbit-two { width: 78%; right: -5%; top: 31%; }
+.video-controls { position: absolute; bottom: 13px; left: 13px; right: 13px; display: flex; justify-content: space-between; gap: 12px; }
+.video-controls button { color: white; background: rgba(20,22,19,.78); border: 1px solid rgba(255,255,255,.25); padding: 10px 12px; border-radius: 3px; font-size: 11px; }
+.intro-media-caption { margin-top: 12px; color: #7a8077; font-size: 9px; font-weight: 550; letter-spacing: .09em; }
+@media (max-width: 670px) { .poster-center strong { font-size: 56px; } }

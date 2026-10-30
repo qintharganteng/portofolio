@@ -1,0 +1,1611 @@
+
+/* ==========================================
+   QINTHAR — EXPERIENCE
+   Interactive Editorial Flipbook
+========================================== */
+
+.experience-section {
+  --book-bg: #ffffff;
+  --book-dark: #785913;
+  --book-left: #f3f0e8;
+  --book-right: #e9ede6;
+  --book-ink: #323632;
+  --book-muted: #767e74;
+  --book-orange: #b15b26;
+
+  width: 100%;
+  max-width: none;
+
+  background: var(--book-bg);
+  color: var(--book-ink);
+}
+
+.experience-section *,
+.experience-section *::before,
+.experience-section *::after,
+.experience-lightbox *,
+.experience-lightbox *::before,
+.experience-lightbox *::after {
+  box-sizing: border-box;
+}
+
+.experience-section.section-space {
+  padding-top: clamp(18px, 2.5vw, 36px);
+  padding-bottom: clamp(65px, 7vw, 110px);
+}
+
+.experience-section .section-heading {
+  margin-bottom: clamp(30px, 4vw, 55px);
+}
+
+/* ==========================================
+   BOOK STAGE
+========================================== */
+
+.experience-book-stage {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+  padding: clamp(18px, 2.4vw, 30px);
+
+  background: var(--book-dark);
+  overflow: hidden;
+}
+
+.experience-book-shell {
+  position: relative;
+
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto 10px;
+
+  perspective: 1800px;
+  transform-style: preserve-3d;
+}
+
+/* Stacked paper effect */
+
+.experience-book-shell::before {
+  content: "";
+
+  position: absolute;
+  z-index: 0;
+
+  top: 9px;
+  right: 8px;
+  bottom: -9px;
+  left: 8px;
+
+  background: #c1c698;
+
+  box-shadow:
+    0 12px 0 -6px #b8bcb3,
+    0 22px 35px rgba(0, 0, 0, 0.15);
+}
+
+.experience-book-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================
+   OPEN BOOK
+========================================== */
+
+.experience-book-spread {
+  position: relative;
+
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  width: 100%;
+  min-height: 640px;
+  height: 640px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.2);
+}
+
+/* Center fold */
+
+.experience-book-spread::after {
+  content: "";
+
+  position: absolute;
+  z-index: 5;
+
+  top: 0;
+  bottom: 0;
+  left: 50%;
+
+  width: 28px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    rgba(45, 46, 37, 0.04),
+    rgba(45, 46, 37, 0.15) 44%,
+    rgba(255, 255, 255, 0.25) 56%,
+    rgba(45, 46, 37, 0.05)
+  );
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   BOOK PAGES
+========================================== */
+
+.experience-book-page {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+
+  padding: clamp(22px, 2.5vw, 34px);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #c8ccc3 transparent;
+}
+
+.experience-book-page::-webkit-scrollbar {
+  width: 4px;
+}
+
+.experience-book-page::-webkit-scrollbar-thumb {
+  background: #c8ccc3;
+  border-radius: 10px;
+}
+
+.experience-book-page--left {
+  background: var(--book-left);
+}
+
+.experience-book-page--right {
+  background: var(--book-right);
+}
+
+/* Technical grid decoration */
+
+.experience-book-page--right::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(100, 117, 101, 0.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(100, 117, 101, 0.055) 1px,
+      transparent 1px
+    );
+
+  background-size: 34px 34px;
+  opacity: 0.65;
+
+  pointer-events: none;
+}
+
+/* Content above decorative layers */
+
+.experience-book-page-top,
+.experience-book-copy,
+.experience-book-footline,
+.experience-visual,
+.experience-view-button {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================
+   DECORATIVE BOOK CORNERS
+========================================== */
+
+.experience-corner {
+  position: absolute;
+  z-index: 0;
+
+  width: clamp(85px, 9vw, 125px);
+  height: clamp(85px, 9vw, 125px);
+
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.experience-corner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.experience-corner--top-left {
+  top: 0;
+  left: 0;
+}
+
+.experience-corner--bottom-right {
+  right: 0;
+  bottom: 0;
+
+  transform: rotate(180deg);
+}
+
+/* ==========================================
+   LEFT PAGE — EXPERIENCE DETAILS
+========================================== */
+
+.experience-book-page-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 18px;
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid #d8d7ce;
+}
+
+.experience-label {
+  color: #b96d41;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  line-height: 1.5;
+  letter-spacing: 0.075em;
+}
+
+.experience-dates {
+  color: #8a9087;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  line-height: 1.5;
+  text-align: right;
+}
+
+/* ==========================================
+   EXPERIENCE COPY
+========================================== */
+
+.experience-book-copy {
+  padding: 28px 0 18px;
+}
+
+.experience-book-copy h3 {
+  max-width: 510px;
+
+  margin: 0 0 15px;
+
+  color: var(--book-ink);
+
+  font-family: "Inter Tight", sans-serif;
+  font-size: clamp(34px, 3.5vw, 52px);
+  font-weight: 500;
+
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+}
+
+.experience-company {
+  max-width: 460px;
+
+  margin: 0 0 7px;
+
+  color: #50584f;
+
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 500;
+
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.experience-location {
+  display: block;
+
+  color: #8c9388;
+  font-size: 11px;
+}
+
+.experience-description {
+  max-width: 490px;
+
+  margin: 21px 0 18px;
+
+  color: #6f766b;
+
+  font-size: clamp(12px, 1vw, 13.5px);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================
+   SKILL TAGS
+========================================== */
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.experience-tags span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 9px;
+
+  color: #566154;
+  background: #e5e6dc;
+
+  border-radius: 2px;
+
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* ==========================================
+   DOCUMENTATION NOTE
+========================================== */
+
+.experience-certificate-note {
+  max-width: 470px;
+
+  margin-top: 20px;
+  padding: 8px 0 8px 13px;
+
+  border-left: 2px solid var(--book-orange);
+}
+
+.certificate-note-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #b46b42;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+}
+
+.experience-certificate-note p {
+  margin: 0;
+
+  color: #777c72;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Bottom decorative line */
+
+.experience-book-footline {
+  display: block;
+
+  width: 42px;
+  height: 2px;
+
+  margin-top: auto;
+
+  background: var(--book-orange);
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   RIGHT PAGE — SHARED VISUAL STYLES
+========================================== */
+
+.experience-visual {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.experience-visual-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+  margin-bottom: 16px;
+
+  color: #687668;
+
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.experience-live-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  background: var(--book-orange);
+  border-radius: 50%;
+
+  animation: experience-pulse 2.8s ease-in-out infinite;
+}
+
+/* ==========================================
+   DATA VISUALIZATION
+========================================== */
+
+.experience-data-display {
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+  padding: 15px;
+
+  background: rgba(255, 255, 255, 0.47);
+
+  border: 1px solid #d6ded2;
+  border-radius: 3px;
+}
+
+.experience-data-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.experience-data-top > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.experience-data-top > div > span {
+  color: #899589;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.experience-data-top strong {
+  color: #334035;
+
+  font-family: "Inter Tight", sans-serif;
+  font-size: clamp(19px, 1.7vw, 24px);
+  font-weight: 500;
+
+  letter-spacing: -0.045em;
+}
+
+.experience-data-symbol {
+  color: #d1814e;
+
+  font-family: monospace;
+  font-size: 24px;
+}
+
+.experience-data-svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin-top: 12px;
+}
+
+.experience-data-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+  padding-top: 12px;
+
+  color: #8b988a;
+
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+}
+
+/* ==========================================
+   ANDROID DEVELOPMENT VISUAL
+========================================== */
+
+.experience-android-scene {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  align-items: center;
+
+  gap: 18px;
+  padding: 8px 0;
+}
+
+/* Android phone */
+
+.experience-phone {
+  width: min(100%, 160px);
+
+  margin: 0 auto;
+  padding: 6px;
+
+  background: #29352c;
+
+  border: 3px solid #29352c;
+  border-radius: 26px;
+
+  box-shadow:
+    9px 12px 0 rgba(49, 62, 48, 0.09);
+}
+
+.experience-phone-screen {
+  min-height: 270px;
+
+  padding: 13px 10px;
+
+  background: #fafbf8;
+
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.experience-phone-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+
+  color: #6d7b6d;
+  font-size: 8px;
+}
+
+.experience-phone-status > span:first-child {
+  width: 25px;
+  height: 5px;
+
+  background: #354035;
+  border-radius: 10px;
+}
+
+/* App header */
+
+.experience-phone-header {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.experience-phone-header small {
+  color: #9aa69a;
+
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.055em;
+}
+
+.experience-phone-header strong {
+  color: #303b32;
+
+  font-family: "Inter Tight", sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+
+  letter-spacing: -0.06em;
+}
+
+/* App feature */
+
+.experience-phone-feature {
+  height: 78px;
+
+  padding: 14px 12px;
+
+  background: #e7ece4;
+  border-radius: 5px;
+}
+
+.experience-phone-feature small {
+  display: block;
+
+  margin-bottom: 19px;
+
+  color: #798778;
+
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.experience-phone-progress {
+  height: 7px;
+
+  background: var(--book-orange);
+  border-radius: 4px;
+}
+
+/* App rows */
+
+.experience-phone-row {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.experience-phone-row-icon {
+  width: 23px;
+  height: 23px;
+
+  flex-shrink: 0;
+
+  background: #b5c8b4;
+  border-radius: 5px;
+}
+
+.experience-phone-row:nth-of-type(odd)
+.experience-phone-row-icon {
+  background: #edc4a8;
+}
+
+.experience-phone-row > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.experience-phone-row i {
+  display: block;
+
+  width: 80%;
+  height: 4px;
+
+  background: #c9d3c7;
+  border-radius: 2px;
+}
+
+.experience-phone-row i:last-child {
+  width: 55%;
+  background: #e1e7df;
+}
+
+/* App navigation */
+
+.experience-phone-navbar {
+  display: flex;
+  justify-content: space-around;
+
+  margin-top: 24px;
+  padding-top: 13px;
+
+  border-top: 1px solid #e1e6df;
+}
+
+.experience-phone-navbar span {
+  width: 8px;
+  height: 8px;
+
+  background: #cad3c8;
+  border-radius: 50%;
+}
+
+.experience-phone-navbar .active {
+  background: var(--book-orange);
+}
+
+/* ==========================================
+   ANDROID DEVELOPMENT STEPS
+========================================== */
+
+.experience-android-side {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  gap: 15px;
+}
+
+.experience-android-side-label {
+  display: block;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid #c6d1c5;
+
+  color: #728072;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+}
+
+.experience-android-step {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+.experience-android-step-dot {
+  width: 9px;
+  height: 9px;
+
+  flex-shrink: 0;
+  margin-top: 5px;
+
+  border: 2px solid #d68a59;
+  border-radius: 50%;
+}
+
+.experience-android-step > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.experience-android-step strong {
+  color: #495849;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.experience-android-step small {
+  color: #899789;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   VISUAL DESCRIPTION
+========================================== */
+
+.experience-visual-summary {
+  margin-top: 20px;
+}
+
+.experience-visual-summary h4 {
+  margin: 0 0 8px;
+
+  color: #354035;
+
+  font-family: "Inter Tight", sans-serif;
+  font-size: clamp(20px, 1.9vw, 26px);
+  font-weight: 500;
+
+  letter-spacing: -0.05em;
+}
+
+.experience-visual-summary p {
+  max-width: 440px;
+  margin: 0;
+
+  color: #718071;
+
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.experience-visual-note {
+  display: block;
+
+  margin-top: 12px;
+
+  color: #9aa69a;
+
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+}
+
+/* ==========================================
+   VIEW DOCUMENTATION BUTTON
+========================================== */
+
+.experience-view-button {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 13px;
+
+  width: 100%;
+  min-height: 46px;
+
+  margin-top: 22px;
+  padding: 10px 14px;
+
+  color: #f9f8f4;
+  background: #29352c;
+
+  border: 1px solid #29352c;
+  border-radius: 3px;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.055em;
+
+  cursor: pointer;
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    transform 300ms ease;
+}
+
+.experience-view-button > svg {
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+}
+
+.experience-view-button > span:nth-child(2) {
+  flex: 1;
+  text-align: left;
+}
+
+.experience-view-arrow {
+  color: #efa879;
+
+  font-size: 19px;
+  line-height: 1;
+
+  transition: transform 250ms ease;
+}
+
+.experience-view-button:focus-visible {
+  outline: 2px solid var(--book-orange);
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   3D PAGE TURN
+========================================== */
+
+.experience-turn-leaf {
+  position: absolute;
+  z-index: 8;
+
+  top: 0;
+  width: 50%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+  will-change: transform;
+
+  pointer-events: none;
+}
+
+.experience-turn-leaf--next {
+  right: 0;
+  transform-origin: left center;
+}
+
+.experience-turn-leaf--previous {
+  left: 0;
+  transform-origin: right center;
+}
+
+.experience-turn-face {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 15px;
+
+  padding: clamp(20px, 2.5vw, 34px);
+
+  overflow: hidden;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.experience-turn-leaf--next
+.experience-turn-face--front {
+  background: var(--book-right);
+}
+
+.experience-turn-leaf--previous
+.experience-turn-face--front {
+  background: var(--book-left);
+}
+
+.experience-turn-face--back {
+  background: #e7e8df;
+  transform: rotateY(180deg);
+}
+
+.experience-turn-face > span {
+  color: #b4764e;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.065em;
+}
+
+.experience-turn-face h3 {
+  margin: 0;
+
+  color: #2b352d;
+
+  font-family: "Inter Tight", sans-serif;
+  font-size: clamp(30px, 3.3vw, 46px);
+  font-weight: 500;
+
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+}
+
+.experience-turn-face p {
+  margin: 0;
+
+  color: #697669;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   BOOK NAVIGATION
+========================================== */
+
+.experience-book-controls {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1080px;
+
+  margin: 0 auto;
+  padding-top: 17px;
+
+  gap: 16px;
+}
+
+.experience-book-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-width: 115px;
+  padding: 11px 0;
+
+  color: #e7ece4;
+  background: transparent;
+
+  border: none;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+
+  transition:
+    color 250ms ease,
+    opacity 250ms ease;
+}
+
+.experience-book-button
+span[aria-hidden="true"] {
+  color: #efa879;
+
+  font-size: 22px;
+  line-height: 1;
+}
+
+.experience-book-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.experience-book-button:focus-visible {
+  outline: 2px solid #efa879;
+  outline-offset: 3px;
+}
+
+/* Progress indicators */
+
+.experience-book-progress {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.experience-book-progress-line {
+  width: 15px;
+  height: 2px;
+
+  background: #647166;
+
+  transition:
+    width 300ms ease,
+    background-color 300ms ease;
+}
+
+.experience-book-progress-line.is-active {
+  width: 35px;
+  background: #efa879;
+}
+
+/* Screen-reader status */
+
+.experience-book-screen-reader {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================
+   DOCUMENTATION LIGHTBOX
+========================================== */
+
+.experience-lightbox {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(20, 25, 21, 0.9);
+}
+
+.experience-lightbox-dialog {
+  display: flex;
+  flex-direction: column;
+
+  width: min(100%, 1000px);
+  max-height: calc(100dvh - 48px);
+
+  padding: clamp(17px, 2.5vw, 30px);
+
+  background: #f7f7f2;
+  color: #29332b;
+
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Lightbox header */
+
+.experience-lightbox-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dedfd7;
+}
+
+.experience-lightbox-header > div > span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #a76e49;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.experience-lightbox-header h3 {
+  margin: 0;
+
+  color: #29332b;
+
+  font-family: "Inter Tight", sans-serif;
+  font-size: clamp(21px, 2.7vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+.experience-lightbox-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  color: #29332b;
+  background: #e7e9e2;
+
+  border: none;
+  border-radius: 3px;
+
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Documentation image */
+
+.experience-lightbox-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1;
+  min-height: 0;
+
+  padding: clamp(16px, 3vw, 32px) 0;
+
+  overflow: auto;
+}
+
+.experience-lightbox-image-wrap img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: min(65dvh, 690px);
+
+  object-fit: contain;
+}
+
+/* Lightbox footer */
+
+.experience-lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 17px;
+  border-top: 1px solid #dedfd7;
+}
+
+.experience-lightbox-original {
+  color: #566557;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  text-decoration: none;
+}
+
+.experience-lightbox-navigation {
+  display: flex;
+  gap: 9px;
+}
+
+.experience-lightbox-navigation button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  color: #f8f8f3;
+  background: #29352c;
+
+  border: none;
+  border-radius: 3px;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.experience-lightbox button:focus-visible,
+.experience-lightbox a:focus-visible {
+  outline: 2px solid #e87532;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   HOVER INTERACTIONS
+========================================== */
+
+@media (hover: hover) {
+  .experience-view-button:hover {
+    background: #37463a;
+    border-color: #37463a;
+    transform: translateY(-2px);
+  }
+
+  .experience-view-button:hover
+  .experience-view-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .experience-book-button:not(:disabled):hover {
+    color: #efa879;
+  }
+
+  .experience-lightbox-close:hover {
+    background: #e1d4c8;
+  }
+
+  .experience-lightbox-navigation button:hover {
+    background: #e87532;
+  }
+
+  .experience-lightbox-original:hover {
+    color: #ce733b;
+  }
+}
+
+/* ==========================================
+   PULSE ANIMATION
+========================================== */
+
+@keyframes experience-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* ==========================================
+   SMALL DESKTOP — 901px TO 1100px
+========================================== */
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .experience-book-spread {
+    height: 670px;
+    min-height: 670px;
+  }
+
+  .experience-book-page {
+    padding: 29px;
+  }
+
+  .experience-book-copy h3 {
+    font-size: clamp(33px, 3.7vw, 43px);
+  }
+
+  .experience-description {
+    font-size: 12px;
+  }
+
+  .experience-android-scene {
+    gap: 17px;
+  }
+
+  .experience-phone {
+    width: min(100%, 145px);
+  }
+}
+
+/* ==========================================
+   TABLET — BELOW 901px
+========================================== */
+
+@media (max-width: 900px) {
+  .experience-section.section-space {
+    padding-top: 20px;
+    padding-bottom: 70px;
+  }
+
+  .experience-book-stage {
+    max-width: 740px;
+    padding: 16px;
+  }
+
+  .experience-book-shell {
+    perspective: none;
+  }
+
+  .experience-book-spread {
+    grid-template-columns: 1fr;
+
+    height: auto;
+    min-height: 0;
+  }
+
+  .experience-book-spread::after,
+  .experience-turn-leaf {
+    display: none;
+  }
+
+  .experience-book-page {
+    height: auto;
+    min-height: 0;
+
+    padding: clamp(23px, 4vw, 34px);
+
+    overflow: hidden;
+  }
+
+  .experience-book-copy {
+    padding-top: 28px;
+  }
+
+  .experience-book-copy h3 {
+    font-size: clamp(35px, 6vw, 47px);
+  }
+
+  .experience-description {
+    max-width: 630px;
+    font-size: 13px;
+  }
+
+  .experience-book-footline {
+    margin-top: 15px;
+  }
+
+  .experience-visual {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .experience-phone {
+    width: min(100%, 160px);
+  }
+
+  .experience-view-button {
+    max-width: 460px;
+    margin-inline: auto;
+  }
+}
+
+/* ==========================================
+   MOBILE — BELOW 521px
+========================================== */
+
+@media (max-width: 520px) {
+  .experience-section .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .experience-book-stage {
+    padding: 10px;
+  }
+
+  .experience-book-page {
+    padding: 22px 19px;
+  }
+
+  .experience-book-page-top {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .experience-book-copy {
+    padding-top: 23px;
+  }
+
+  .experience-book-copy h3 {
+    font-size: clamp(33px, 8.5vw, 43px);
+  }
+
+  .experience-company {
+    font-size: 15px;
+  }
+
+  .experience-description {
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  .experience-visual-heading {
+    font-size: 9px;
+  }
+
+  .experience-data-display {
+    max-width: 100%;
+    padding: 14px 12px;
+  }
+
+  .experience-data-top strong {
+    font-size: 22px;
+  }
+
+  .experience-data-flow {
+    font-size: 8px;
+  }
+
+  /* Android visual */
+
+  .experience-android-scene {
+    gap: 14px;
+  }
+
+  .experience-phone {
+    width: min(100%, 133px);
+
+    padding: 4px;
+
+    border-width: 2px;
+    border-radius: 21px;
+  }
+
+  .experience-phone-screen {
+    min-height: 240px;
+
+    padding: 12px 9px;
+    border-radius: 15px;
+  }
+
+  .experience-phone-header strong {
+    font-size: 20px;
+  }
+
+  .experience-phone-feature {
+    height: 60px;
+    padding: 10px 8px;
+  }
+
+  .experience-phone-feature small {
+    margin-bottom: 14px;
+  }
+
+  .experience-android-side {
+    gap: 15px;
+  }
+
+  .experience-android-step {
+    gap: 8px;
+  }
+
+  .experience-android-step strong {
+    font-size: 10px;
+  }
+
+  .experience-android-step small {
+    font-size: 9px;
+  }
+
+  /* Summary */
+
+  .experience-visual-summary h4 {
+    font-size: 23px;
+  }
+
+  .experience-visual-summary p {
+    font-size: 11px;
+  }
+
+  .experience-view-button {
+    margin-top: 20px;
+  }
+
+  /* Navigation */
+
+  .experience-book-controls {
+    gap: 10px;
+    padding-top: 20px;
+  }
+
+  .experience-book-button {
+    min-width: 0;
+    gap: 7px;
+    font-size: 10px;
+  }
+
+  .experience-book-progress-line {
+    width: 12px;
+  }
+
+  .experience-book-progress-line.is-active {
+    width: 25px;
+  }
+
+  /* Lightbox */
+
+  .experience-lightbox {
+    padding: 12px;
+  }
+
+  .experience-lightbox-dialog {
+    max-height: calc(100dvh - 24px);
+    padding: 16px;
+  }
+
+  .experience-lightbox-header h3 {
+    font-size: 21px;
+  }
+
+  .experience-lightbox-image-wrap img {
+    max-height: 58dvh;
+  }
+
+  .experience-lightbox-original {
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-live-dot {
+    animation: none;
+  }
+
+  .experience-view-button,
+  .experience-view-arrow,
+  .experience-book-button,
+  .experience-book-progress-line {
+    transition: none;
+  }
+
+  .experience-view-button:hover {
+    transform: none;
+  }
+}

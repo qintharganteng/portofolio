@@ -1,0 +1,13 @@
+:root {
+  --bg: #f9f9f6;
+  --paper: #ffffff;
+  --surface: #f0f1ed;
+  --ink: #292b27;
+  --ink-soft: #474c46;
+  --muted: #7b7f78;
+  --line: #d9dbd5;
+  --accent: #687863;
+  --font: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --shell: 1460px;
+  --gutter: clamp(22px, 5.15vw, 86px);
+}
