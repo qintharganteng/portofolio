@@ -4,7 +4,7 @@ export const profile = {
   fullName: 'Muhammad Qinthar Sabilla Almalki',
     email: 'qintharalmaliki@gmail.com',
   heading: ["Hi, I'm", 'Qinthar.'],
-  intro: 'Software Developer specializing in front-end and mobile applications, Quality Assurance Tester, with expertise in data analytics, data science and machine learning. I focus on building intuitive, functional, and digital solutions that turn complex ideas into practical experiences.',
+  intro: 'Software Developer specializing in front-end and mobile applications, Quality Assurance Tester, with expertise in data analytics, data science and machine learning research. I focus on building intuitive, functional, and digital solutions that turn complex ideas into practical experiences.',
   availability: 'Open to meaningful opportunities',
   // Taruh file MP4 di public/videos/intro.mp4, lalu ubah null menjadi '/videos/intro.mp4'.
   introVideoSrc: "/videos/intro.mp4",
