@@ -7,6 +7,69 @@ import Reveal from "../components/ui/Reveal";
 import "./Education.css";
 
 /* ==========================================
+   ADDITIONAL CERTIFICATES
+   JAVA FUNDAMENTAL & MATLAB ONRAMP
+========================================== */
+
+const additionalCertificates = [
+  {
+    id: "java-fundamental",
+    name: "Java Fundamental",
+    issuer: "",
+    category: "Programming Fundamentals & OOP",
+    image:
+      `${import.meta.env.BASE_URL}images/javafundamental.png`,
+    status: "Completed",
+  },
+  {
+    id: "matlab-onramp",
+    name: "MATLAB Onramp",
+    issuer: "MathWorks Training Services",
+    category: "Programming & Numerical Computing",
+    image:
+      `${import.meta.env.BASE_URL}images/mathworks.png`,
+    status: "Completed",
+  },
+];
+
+/* ==========================================
+   MERGE CERTIFICATES WITHOUT DUPLICATES
+========================================== */
+
+function getImageFileName(image) {
+  return String(image ?? "")
+    .split(/[?#]/)[0]
+    .split("/")
+    .pop()
+    .toLowerCase();
+}
+
+function buildCertificationList() {
+  const original = [...certifications];
+
+  const newItems = additionalCertificates.filter(
+    (additional) =>
+      !original.some((existing) => {
+        const sameImage =
+          getImageFileName(existing.image) ===
+          getImageFileName(additional.image);
+
+        const sameName =
+          String(existing.name ?? "")
+            .trim()
+            .toLowerCase() ===
+          additional.name.toLowerCase();
+
+        return sameImage || sameName;
+      })
+  );
+
+  return [...original, ...newItems];
+}
+
+const allCertifications = buildCertificationList();
+
+/* ==========================================
    COVERFLOW POSITION HELPER
 ========================================== */
 
@@ -31,11 +94,15 @@ function getCircularOffset(index, activeIndex, total) {
 export default function Education() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const trainingItems = certifications.filter(
+  /* ========================================
+     CERTIFICATION DATA
+  ======================================== */
+
+  const trainingItems = allCertifications.filter(
     (item) => Boolean(item.image)
   );
 
-  const pendingItems = certifications.filter(
+  const pendingItems = allCertifications.filter(
     (item) => !item.image
   );
 
@@ -43,7 +110,7 @@ export default function Education() {
   const activeItem = trainingItems[activeIndex];
 
   /* ========================================
-     CERTIFICATE NAVIGATION
+     CAROUSEL NAVIGATION
   ======================================== */
 
   function moveSlide(direction) {
@@ -75,7 +142,7 @@ export default function Education() {
       <div className="education-shell page-shell">
 
         {/* ======================================
-            FORMAL EDUCATION
+            01 — FORMAL EDUCATION
         ====================================== */}
 
         <Reveal className="education-academic">
@@ -115,7 +182,7 @@ export default function Education() {
         </Reveal>
 
         {/* ======================================
-            CERTIFICATE GALLERY
+            02 — CERTIFICATION GALLERY
         ====================================== */}
 
         <div className="education-certifications">
@@ -123,7 +190,7 @@ export default function Education() {
           {total > 0 ? (
             <div className="education-gallery">
 
-              {/* ACTIVE CERTIFICATE DETAILS */}
+              {/* ACTIVE CERTIFICATE INFORMATION */}
 
               <div
                 className="education-active-heading"
@@ -140,15 +207,14 @@ export default function Education() {
                 <h4>{activeItem.name}</h4>
 
                 <p>
-                  {activeItem.issuer}
-                  {activeItem.category
-                    ? ` — ${activeItem.category}`
-                    : ""}
+                  {[activeItem.issuer, activeItem.category]
+                    .filter(Boolean)
+                    .join(" — ")}
                 </p>
               </div>
 
               {/* ==================================
-                  ANIMATED CERTIFICATE COVERFLOW
+                  CERTIFICATE COVERFLOW
               ================================== */}
 
               <div
@@ -171,7 +237,6 @@ export default function Education() {
                   );
 
                   const distance = Math.abs(offset);
-
                   const isActive = offset === 0;
                   const isOutside = distance > 2;
 
@@ -207,13 +272,12 @@ export default function Education() {
                           alt={`Certificate: ${item.name}`}
                           loading={isActive ? "eager" : "lazy"}
                           decoding="async"
-                          draggable="false"
+                          draggable={false}
                         />
                       </span>
                     </button>
                   );
                 })}
-
               </div>
 
               {/* ==================================
@@ -263,7 +327,7 @@ export default function Education() {
                   </button>
                 </div>
 
-                {/* FULL CERTIFICATE LINK */}
+                {/* VIEW ORIGINAL IMAGE */}
 
                 <a
                   href={activeItem.image}
@@ -314,25 +378,25 @@ export default function Education() {
         </div>
 
         {/* ======================================
-            ONGOING LEARNING
+            03 — ONGOING LEARNING
         ====================================== */}
 
         {pendingItems.length > 0 && (
           <div className="education-pending-section">
-
             {pendingItems.map((item, index) => (
               <Reveal
                 key={item.id ?? index}
                 className="education-pending-row"
                 delay={index * 0.06}
               >
+
                 {/* ENTRY NUMBER */}
 
                 <span className="education-pending-number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                {/* CERTIFICATION INFORMATION */}
+                {/* TRAINING INFORMATION */}
 
                 <div className="education-pending-copy">
                   <span>
@@ -354,7 +418,6 @@ export default function Education() {
 
               </Reveal>
             ))}
-
           </div>
         )}
 
