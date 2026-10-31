@@ -18,22 +18,22 @@ import "./Hero.css";
 const socialLinks = [
   {
     label: "Instagram",
-    href: "",
+    href: "https://instagram.com/qintharalmaliki",
     Icon: FaInstagram,
   },
   {
     label: "TikTok",
-    href: "",
+    href: "https://tiktok.com/@qintharalmaliki",
     Icon: FaTiktok,
   },
   {
     label: "LinkedIn",
-    href: "",
+    href: "https://linkedin.com/in/muhammad-qinthar-3454442ba/",
     Icon: FaLinkedinIn,
   },
   {
     label: "WhatsApp",
-    href: "",
+    href: "https://wa.me/6282127854156",
     Icon: FaWhatsapp,
   },
 ];
